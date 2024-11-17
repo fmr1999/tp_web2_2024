@@ -1,0 +1,59 @@
+<?php 
+    if (isset($_SESSION['USER_NAME'])) : 
+    require_once 'templates/formProducto.phtml';
+    endif
+?>
+
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Color</th>
+            <th>Deporte</th>
+            <?php if (isset($_SESSION['USER_NAME'])) : ?>
+            <th>Operaciones</th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($productos as $producto): ?>
+            <tr>
+                <td><?php echo $producto->nombre; ?></td>
+                <td><?php echo $producto->precio; ?></td>
+                <td><?php echo $producto->color; ?></td>
+                <td><?php echo $producto->id_deporte; ?></td>
+                <?php if (isset($_SESSION['USER_NAME'])) : ?>
+                <td><a href="productoPorID/<?= $producto->id_producto?>" type="button" class='btn btn-danger ml-auto'>Detalle</a>
+                <a href="eliminarProducto/<?= $producto->id_producto?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+                <a href="editarProductoBoton/<?= $producto->id_producto ?>" type="button" class='btn btn-warning ml-auto'>Editar</a>
+                <?php endif; ?>
+                </td>
+              </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php if (isset($_SESSION['USER_NAME'])) : ?>
+<div class="ml-7">
+  <form action="filtrar" method="POST">
+    <div class="col-2">
+      <div class="form-group text-center">
+        <label>Deporte</label>
+        <select required name="deporte" class="form-control text-center">
+          <?php foreach ($deportes as $deporte) : ?>
+            <option value="<?= $deporte->id_deporte ?>"> <?= $deporte->nombre?> </option>
+          <?php endforeach ?>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class='btn btn-danger ml-auto my-2'>Filtrar</button>
+  </form>
+</div>
+<?php endif; ?>
+
+
+   
+
+

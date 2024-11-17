@@ -1,0 +1,63 @@
+<form action="<?= BASE_URL ?>editarProducto/<?= $producto->id_producto ?>" method="POST">
+    <div class="row text-center">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input name="nombre" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label>Precio</label>
+                <input name="precio" type="number" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label>Color</label>
+                <input name="color" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-2">
+            <div class="form-group">
+                <label>Deporte</label>
+                <select name="deporte" class="form-control text-center" required>
+                    <?php foreach ($deportes as $deporte) : ?>
+                        <option value="<?= $deporte->id_deporte ?>"> 
+                            <?= $deporte->nombre ?> 
+                        </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-warning mt-2">Guardar</button>
+</form>
+
+
+
+<table class="table table-striped-columns">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Color</th>
+      <th scope="col">Deporte</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"> <?= $producto->id_producto ?> </th>
+            <td> <?= $producto->nombre ?> </td>
+            <td> <?= $producto->precio ?> </td>
+            <td> <?= $producto->color ?> </td>
+            <td> <?= $producto->id_deporte ?> </td>
+         </tr>
+       
+    </tbody>
+</table>
+

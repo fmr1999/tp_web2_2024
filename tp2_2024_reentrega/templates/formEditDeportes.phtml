@@ -1,0 +1,28 @@
+<form action="<?= BASE_URL ?>editarDeporte/<?= $deporte->id_deporte ?>" method="POST" class="my-4">
+    <div class="col-2 text-center">
+        <div class="form-group">
+            <div class="form-group">
+                <label>Editar deporte</label>
+                <input required name="deporte" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-warning mt-2">Enviar</button>
+</form>
+
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">deporte</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"> <?= $deporte->id_deporte ?> </th>
+            <td> <?= $deporte->id_deporte ?> </td>
+        </tr>
+    </tbody>
+</table>
+
